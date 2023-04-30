@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite by Exclude Methods" verbose="1">
+    <test name="FirstTest01">
+        <classes>
+            <class name="quangtester.com.TestRunXMLByPackage.RunTestNG03">
+                <methods>
+                    <exclude name="testAnhTesterBlog"></exclude>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

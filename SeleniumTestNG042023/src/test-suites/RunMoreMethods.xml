@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite by Methods" verbose="1">
+    <test name="Run With Methods">
+        <classes>
+            <class name="quangtester.com.TestRunXMLByPackage.RunTestNG03">
+                <methods>
+                    <include name="testGoogleSearch"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

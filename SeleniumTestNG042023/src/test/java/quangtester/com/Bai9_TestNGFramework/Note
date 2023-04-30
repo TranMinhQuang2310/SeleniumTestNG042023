@@ -1,0 +1,11 @@
+1. Cách chạy 2(hoặc nhiều) class/package/methods cùng lúc thông qua 1 file chung xml :
+    B1 : Nhấp vào src => Chuột phải vô new => Directory => đặt tên "test-suites"
+    B2 : Chuột phải vô Directory vừa tạo => new => File => Đặt tên đó đuôi .xml
+
+2. Include và Exclude
+    2.1 Include: được dùng trong các trường hợp sau đây:
+        - Trong 1 package có nhiều package, nhưng chỉ muốn run số ít package trong đó.
+        -Trong 1 Class có nhiều method, chỉ muốn run số ít method (xem lại mục IV ở trên).
+    2.2 Exclude: được dùng trong các trường hợp sau đây:
+        - Trong 1 package có nhiều package, nhưng muốn không run một vài package trong đó.
+        - Trong 1 Class có nhiều method, nhưng muốn không run một vài method.

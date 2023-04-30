@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite by Class" verbose="1">
+    <test name="FirstTest01">
+        <classes>
+            <class name="quangtester.com.Bai9_TestNGFramework.RunTestNG" />
+            <class name="quangtester.com.Bai9_TestNGFramework.RunTestNG02" />
+        </classes>
+    </test>
+</suite>

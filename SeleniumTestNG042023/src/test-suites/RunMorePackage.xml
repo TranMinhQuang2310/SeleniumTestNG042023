@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite by Package" verbose="1">
+    <test name="FirstTest01">
+        <packages>
+            <package name="quangtester.com.Bai9_TestNGFramework"></package>
+            <package name="quangtester.com.TestRunXMLByPackage"></package>
+        </packages>
+    </test>
+</suite>
