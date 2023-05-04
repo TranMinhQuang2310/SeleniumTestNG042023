@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite CMS" verbose="1">
+    <test name="Suite for CMS">
+        <classes>
+            <class name="quangtester.com.Bai10_AnnotationTestNG.LoginCMS">
+            </class>
+        </classes>
+    </test>
+</suite>

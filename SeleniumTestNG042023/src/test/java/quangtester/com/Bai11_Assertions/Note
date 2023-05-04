@@ -1,0 +1,40 @@
+1. Hard Assert :
+    - ĐN :
+        + Assert là 1 class
+        + Khẳng định cứng là những xác nhận dừng việc thực thi kiểm tra khi một câu lệnh khẳng định không thành công và
+các câu lệnh khẳng định tiếp theo sẽ không được thực hiện.
+    - Xác nhận cứng là loại xác nhận mặc định trong TestNG. Các hàm xác thực khẳng định bên dưới:
+        1.1 assertEquals(actual, expected , message) :
+            + actual : thực tế => Điền kết quả thực tế lấy từ Automation
+            + expected : mong đợi => giá trị cứng để điền vô so sánh có giống với giá trị ở thực tế không
+            + message : trường hợp chạy SAI => In ra câu message . Nếu chạy ĐÚNG sẽ không hiện (KHÔNG BẮT BUỘC DÙNG)
+            + ĐN : Dùng để so sánh BẰNG nhau 2 phần tử có cùng TYPE
+
+        1.2 assertNotEquals(actual, expected , message) => Phủ định của 1.1 => Dùng để so sánh KHÔNG BẰNG nhau 2 phần tử có cùng TYPE
+
+        1.3 assertTrue(boolean condition, message) => Mong đợi kết quả trả về là true
+
+        1.4 assertFalse(boolean condition) => hủ định của 1.3 => Mong đợi kết quả trả về là false
+
+        1.5 assertNull(Object) => Mong đợi Object ta đang nhắm tới là Null.
+
+        1.6 assertNotNull(Object) => Mong đợi Object ta đang nhắm tới là not Null.
+
+2. Soft Assert
+    - ĐN :
+        + Khẳng định mềm trái ngược với khẳng định cứng. Trong các xác nhận mềm, các xác nhận tiếp theo vẫn tiếp tục chạy
+        ngay cả khi một xác nhận xác nhận không thành công, tức là quá trình thực thi kiểm tra không dừng lại
+        + Các điểm quan trọng cần nhớ liên quan đến khẳng định mềm mà chúng ta có thể nhận thấy trong đoạn mã trên là:
+          !. Xác nhận mềm yêu cầu nhập bên ngoài gói import org.testng.asserts.SoftAssert ;.
+          !!. Khởi tạo một đối tượng của SoftAssert để chạy các câu lệnh khẳng định .
+          !!!. Câu lệnh object.assertAll() được yêu cầu để xem các ngoại lệ; nếu không, người kiểm tra sẽ không biết điều gì
+          đã đạt và điều gì không thành công .
+
+
+3. Áp dụng thực tế hay dùng :
+- Hard Assert : check sự tồn tại của Object(button , menu , alert , diaglog ,...) , data phải đúng sau khi :
+    + Add , Edit , Delete
+
+- Soft Assert : check text của label , header page , tittle , label của từng field , text dạng placeholder , màu sắc ,kích cỡ
+
+

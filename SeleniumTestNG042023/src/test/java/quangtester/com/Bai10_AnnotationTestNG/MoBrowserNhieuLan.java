@@ -1,24 +1,19 @@
-package quangtester.com.Bai9_TestNGFramework;
+package quangtester.com.Bai10_AnnotationTestNG;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
-public class RunTestNG02 {
+public class MoBrowserNhieuLan {
+
+    //@BeforeMethod
     WebDriver driver;
-
     @BeforeMethod
-    public void createDriver() {
-        //WebDriverManager.chromedriver().setup();
-        //=> Khi có framework testNG thì không cần dùng thư viện WebdriverManager nữa (kể từ version selenium 4.6)
-
-        //Khởi dộng với Chrome driver
+    public void createBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //chờ đợi ngầm để tìm kiếm element , nếu không tìm ra thì báo lỗi
@@ -44,8 +39,9 @@ public class RunTestNG02 {
         Thread.sleep(2000);
     }
 
+    //AfterTest hoặc AfterClass
     @AfterMethod
-    public void closeDriver() {
-       driver.quit();
+    public void closeBrowser() {
+        driver.quit();
     }
 }

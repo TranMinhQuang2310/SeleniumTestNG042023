@@ -1,11 +1,9 @@
-package quangtester.com.TestRunXMLByPackage;
+package quangtester.com.Bai9_TestRunXMLByPackage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,7 +16,7 @@ public class RunTestNG03 {
     @BeforeMethod
     public void createDriver() {
         //WebDriverManager.firefoxdriver().setup();
-        //=> Khi có framework testNG thì không cần dùng thư viện WebdriverManager nữa (kể từ version selenium 4.0.6)
+        //=> Khi có framework testNG thì không cần dùng thư viện WebdriverManager nữa (kể từ version selenium 4.6)
 
         //Khởi dộng với Chrome driver
         driver = new EdgeDriver();

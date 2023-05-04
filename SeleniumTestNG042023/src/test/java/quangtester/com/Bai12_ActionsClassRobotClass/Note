@@ -1,0 +1,51 @@
+1. Phân biệt giữa Actions class và Robot class
+    - Actions class :
+        + Là một thư viện được cung cấp bởi Selenium để xử lý các sự kiện bàn phím và chuột.
+        + Thiên về Driver (cần chỉ định session cụ thể)
+        + Dùng hành động dính tới Element thì nên dùng Action class
+    - Robot class :
+        + Là một thư viện được cung cấp bởi Java để xử lý các sự kiện bàn phím và chuột.
+        + Dùng phím nên dùng Robot class => hỗ trợ hiển thị tất cả các phím
+
+2. Các Phương thức của Actions class :
+     2.1 Các thao tác chuột trong Selenium:
+        - doubleClick () : Thực hiện nhấp đúp vào phần tử
+        - clickAndHold () : Thực hiện nhấp lâu vào chuột mà không nhả nó
+        - dragAndDrop () : Kéo phần tử từ một điểm và thả xuống một điểm khác
+        - moveToElement () : Di chuyển con trỏ chuột đến giữa phần tử
+        - moveToElementBy() : Một phương thức thực hiện nhấp và giữ tại vị trí của phần tử nguồn, di chuyển theo một độ lệch đã cho, sau đó nhả chuột.
+        - moveByOffset(): Di chuyển chuột từ vị trí hiện tại của nó (hoặc 0,0) theo độ lệch đã cho.
+        - release() : Thả nút chuột trái ở vị trí chuột hiện tại (Nhấc chuột lên)
+        - contextClick () : Thực hiện nhấp chuột phải vào chuột
+
+     2.2 Thao tác bàn phím trong Selenium:
+        - sendKeys () : Gửi một loạt khóa đến phần tử
+        - keyUp () : Thực hiện phát hành khóa (Nhấc phím lên)
+        - keyDown () : Thực hiện nhấn phím mà không cần nhả (Đè phím)
+        Các lệnh bàn phím khác...(ENTER, SHIFT, CTRL, TAB,...)
+
+     2.3 Lệnh xác nhận các thao tác trên:
+        - build() trong lớp Actions được sử dụng để tạo chuỗi hành động hoặc thao tác mà bạn muốn thực hiện.
+        - perform()Phương thức này trong Lớp Hành động được sử dụng để thực hiện chuỗi hành động được xây dựng bằng cách sử dụng Phương pháp xây dựng Hành động.
+        - build().perform() = tạo chuỗi hành động + thực thi
+               => Có thể bỏ build() trong trường hợp chỉ thao tác 1 hành động
+
+3. Các phương thức của Robot class :
+    2.1 Các thao tác chuột trong Java :
+        - mousePress : nhấn một hoặc nhiều nút chuột
+            VD :
+                + mousePress(InputEvent.BUTTON1_DOWN_MASK) => Nhấp chuột trái
+                + mousePress(InputEvent.BUTTON2_DOWN_MASK) => Nhấp chuột giữa
+                + mousePress(InputEvent.BUTTON3_DOWN_MASK) => Nhấp chuột phải
+        - mouseRelease : nhả chuột
+            VD : mouseRelease(InputEvent.BUTTON1_DOWN_MASK) => Nhả chuột
+        - mouseMove (int x, int y): Phương thức này di chuyển con trỏ chuột đến tọa độ màn hình đã cho được chỉ định
+        bởi các giá trị x và y
+            VD : mouseMove(100, 50) sẽ di chuyển con trỏ chuột đến tọa độ x 100 và tọa độ y 50 trên màn hình.
+
+        - delay(số giây) => giống hàm sleep trong class BaseTest
+    2.2 Thao tác bàn phím trong Java :
+        - keyPress : Nhấn phím
+            VD :  keyPress(KeyEvent.VK_SHIFT) => Nhấn phím "SHIFT"
+        - keyRelease : Nhả phím lên
+            VD : keyRelease(KeyEvent.VK_SHIFT) => Nhả phím "SHIFT"

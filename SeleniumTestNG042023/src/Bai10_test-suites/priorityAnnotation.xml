@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Annotation" verbose="1">
+    <test name="Suite for Annotation">
+        <classes>
+            <class name="quangtester.com.Bai10_AnnotationTestNG.MoBrowserMotLan">
+                <methods>
+                    <include name="testAnhTesterBlog"></include>
+                    <include name="testAnhTesterLogin"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,22 +1,21 @@
-package quangtester.com.Bai9_TestNGFramework;
+package quangtester.com.Bai10_AnnotationTestNG;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class RunTestNG {
+public class MoBrowserMotLan {
+
+    //@BeforeTest hoặc @BeforeClass
     WebDriver driver;
-
     @BeforeClass
-    public void createDriver() {
-        //WebDriverManager.chromedriver().setup();
-        //=> Khi có framework testNG thì không cần dùng thư viện WebdriverManager nữa (kể từ version selenium 4.6)
-
-        //Khởi dộng với Chrome driver
+    public void createBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //chờ đợi ngầm để tìm kiếm element , nếu không tìm ra thì báo lỗi
@@ -25,7 +24,7 @@ public class RunTestNG {
     }
 
     //Tạo 1 testcase
-    @Test
+    @Test(priority = 1) //priority là độ ưu tiên
     public void testAnhTesterBlog() throws InterruptedException {
         driver.get("https://anhtester.com");
         driver.findElement(By.xpath("//a[normalize-space()='blog']")).click();
@@ -33,17 +32,17 @@ public class RunTestNG {
     }
 
     //Tạo 1 testcase
-    @Test
-    public void testGoogleSearch() throws InterruptedException {
-        driver.get("https://www.google.com/");
-        driver.findElement(By.xpath("//textarea[@id='APjFqb']")).sendKeys("anhtester", Keys.ENTER);
+    @Test(priority = 2)//priority là độ ưu tiên
+    public void testAnhTesterLogin() throws InterruptedException {
+        driver.findElement(By.xpath("//a[@id='btn-login']")).click();
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//h3[normalize-space()='Anh Tester Automation Testing']")).click();
-        Thread.sleep(2000);
+        System.out.println("Tên Page là :" + driver.findElement(By.xpath("//h2[normalize-space()='Login']")).getText());
+        Thread.sleep(1000);
     }
 
+    //AfterTest hoặc AfterClass
     @AfterClass
-    public void closeDriver() {
-       driver.quit();
+    public void closeBrowser() {
+        driver.quit();
     }
 }
