@@ -1,0 +1,55 @@
+1. Cách xử lý Alert trong Selenium Java
+
+- Chèn thư viện cái: import org.openqa.selenium.Alert;
+- Các hàm xử lý:
+    + void dismiss()  // To click on the 'Cancel' button of the alert.
+        => driver.switchTo().alert().dismiss();
+    + void accept()  // To click on the 'OK' button of the alert.
+        => driver.switchTo().alert().accept()
+    + String getText()  // To get message Text.
+        => driver.switchTo().alert().getText();
+    + void sendKeys(String stringToSend)  // To input data on input text to alert box.
+        => driver.switchTo().alert().sendKeys("Text");
+
+2.  Cách xử lý Popup Window trong Selenium Java
+    + get.windowhandle(): Phương thức này giúp lấy cửa sổ điều khiển của cửa sổ hiện tại
+        VD : String mainWindow = driver.getWindowHandle(); => Lấy ID của tab Window Chính
+
+    + get.windowhandles(): Phương thức này giúp lấy các xử lý của tất cả các cửa sổ đã mở
+        VD : String windows = driver.getWindowHandles(); => Lấy ID của tab Window Phụ
+
+    + Set: Phương thức này giúp thiết lập các chốt cửa sổ dưới dạng một chuỗi. set <string> set = driver.get.windowhandles ()
+            => Lưu vào 1 Set để lưu các phần tử giá trị KHÔNG trùng lặp
+
+    + switchTo: Phương pháp này giúp chuyển đổi giữa các cửa sổ
+        => Chuyển hướng đến Tab/Window mới với ID được chỉ định
+
+    + action: Phương pháp này giúp thực hiện các hành động nhất định trên cửa sổ
+    (getTitle, getCurrentUrl, get,...)
+
+3. Cách xử lý iFrames trong Selenium Java
+- ĐN :
+    + iFrame là một trang web hoặc một khung nội tuyến được nhúng trong một trang web khác hoặc một tài liệu HTML được
+nhúng bên trong một tài liệu HTML khác. Khung nội tuyến thường được sử dụng để thêm nội dung từ các nguồn khác như
+quảng cáo vào một trang web hoặc dùng để nhúng :
+          => Google Map , Messenger , Zalo ,...
+    + Khung nội tuyến được xác định bằng thẻ <iframe>
+
+- Xác định tổng số iframe bằng cách sử dụng đoạn mã sau:
+    int sizeIFrame = driver.findElements(By.tagName("iframe")).Size();
+        Giải thích :
+            + findElements => tìm nhiều phần tử có Locators (thẻ trong HTML)
+            + tagName => tên thẻ trong HTML
+            + Size => Lấy ra toàn bộ số lượng iframe đang tồn tại
+
+- Cách chuyển đến iFrame cụ thể :
+    a) Chuyển sang khung theo Chỉ mục (thứ tự):
+       + Giả sử nếu có 100 khung trong trang, chúng ta có thể chuyển sang khung trong Selenium bằng cách sử dụng chỉ mục.
+       + VD : (Bắt đầu từ số 0)
+            driver.switchTo().frame(0);
+            driver.switchTo().frame(1);
+
+    b) Chuyển sang khung theo Name hoặc ID:
+        + VD :
+            driver.switchTo().frame("iframe1");
+            driver.switchTo().frame("id của phần tử");

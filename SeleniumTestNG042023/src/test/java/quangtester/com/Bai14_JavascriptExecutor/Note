@@ -1,0 +1,39 @@
+                                                    JavaScriptExecutor
+1. ĐN :
+    - JavaScriptExecutor là một giao diện(hoặc class) được cung cấp bởi Selenium Webdriver,
+trình bày cách thực thi JavaScript từ Webdriver
+    - Sự khác nhau giữa JavaScriptExecutor và Selenium :
+        + JavaScriptExecutor thực thi trực tiếp ở trong DOM (trong đoạn HTML => chuột phải + View page source)
+        + Selenium thực thi trên giao diện
+
+2. Giới thiệu về các phương thức JavaScriptExecutor :
+    a) executeScript :
+        - ĐN :
+            + Tất cả các hàm có executeScript thì toàn bộ click dựa vào DOM nên nó không quan tâm bị che
+
+        - Cú pháp :
+            + js.executeScript(java.lang.String script, java.lang.Object... args)
+            + Thông số :
+                script - JavaScript để thực thi
+                args(arguments[0]) - Gọi là tham số ( hoặc gọi là đối số) của script. Có thể trống.
+
+3. Các tình huống sử dụng JavaScriptExecutor trong Selenium
+    a) Nhấp vào một Element
+        - ĐN : Khi mà Selenium nó báo là không thể tương tác hay không thể click vào một phần tử web nghĩa là có thể nó
+        đang bị che hoặc chưa load lên UI kịp thời. Khi đó thằng Javascript này nó click dựa vào DOM nên nó không quan tâm bị che
+
+        - VD :
+            js.executeScript("document.getElementById('id_of_element').click();");
+            //hoặc
+            js.executeScript("arguments[0].click();", buttonLogin);
+                => Giải nghĩa :
+                    + arguments[0] : cần truyền vào 1 tham số dạng WebElement để click dựa vào DOM
+
+    b) Để nhập văn bản vào hộp văn bản mà không sử dụng phương thức sendKeys()
+        - ĐN : "value" là thuộc tính trong thẻ input. Ngoài thuộc tính "value" thì có thể dùng các thuộc tính còn lại
+        như "placeholder", "innerHTML",...
+
+        - VD :
+            js.executeScript("document.getElementById('email').setAttribute('value','admin02@mailinator.com');");
+            js.executeScript("document.getElementById('password').setAttribute('value','123456');");
+
