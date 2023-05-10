@@ -18,7 +18,7 @@ trình bày cách thực thi JavaScript từ Webdriver
                 args(arguments[0]) - Gọi là tham số ( hoặc gọi là đối số) của script. Có thể trống.
 
 3. Các tình huống sử dụng JavaScriptExecutor trong Selenium
-    a) Nhấp vào một Element
+    a) Nhấp vào một Element :
         - ĐN : Khi mà Selenium nó báo là không thể tương tác hay không thể click vào một phần tử web nghĩa là có thể nó
         đang bị che hoặc chưa load lên UI kịp thời. Khi đó thằng Javascript này nó click dựa vào DOM nên nó không quan tâm bị che
 
@@ -29,11 +29,96 @@ trình bày cách thực thi JavaScript từ Webdriver
                 => Giải nghĩa :
                     + arguments[0] : cần truyền vào 1 tham số dạng WebElement để click dựa vào DOM
 
-    b) Để nhập văn bản vào hộp văn bản mà không sử dụng phương thức sendKeys()
+    b) Để nhập văn bản vào hộp văn bản mà không sử dụng phương thức sendKeys() :
         - ĐN : "value" là thuộc tính trong thẻ input. Ngoài thuộc tính "value" thì có thể dùng các thuộc tính còn lại
         như "placeholder", "innerHTML",...
 
         - VD :
             js.executeScript("document.getElementById('email').setAttribute('value','admin02@mailinator.com');");
             js.executeScript("document.getElementById('password').setAttribute('value','123456');");
+
+
+    c) Để xử lý Checkbox bằng cách chuyển giá trị là true hoặc false :
+        - VD :
+            js.executeScript("document.getElementById('id_of_element').checked=false;");
+            //hoặc
+            js.executeScript("document.getElementById('id_of_element').checked=true;");
+
+    d) Để tạo Alert trong Selenium Webdriver
+        - VD :
+             js.executeScript("alert('Welcome To Anh Tester - Automation Testing');");
+
+    e) Để làm mới cửa sổ trình duyệt bằng Javascript
+        - VD :
+             js.executeScript("history.go(0)");
+
+    f) Để lấy nội dung của toàn bộ trang web trong Selenium
+        - VD :
+             String innerText = js.executeScript("return document.documentElement.innerText;").toString();
+             System.out.println(innerText);
+
+    g)  Để lấy Tiêu đề của trang web
+        - VD :
+              String titleText = js.executeScript("return document.title;").toString();
+              System.out.println(titleText);
+
+    h)  Để lấy tên miền
+        - VD :
+              String domainName= js.executeScript("return document.domain;").toString();
+              System.out.println(domainName);
+
+    i)  Để lấy URL của một trang web
+        - VD :
+              String url= js.executeScript("return document.URL;").toString();
+              System.out.println(url);
+
+    k)  Để lấy Chiều cao và Chiều rộng của một trang web
+        - VD :
+              js.executeScript("return window.innerHeight;").toString();
+              js.executeScript("return window.innerWidth;").toString();
+
+    l)  Để tìm một phần tử ẩn (bị khuất) trong Selenium bằng JavaScriptExecutor
+        - VD :
+              js.executeScript("arguments[0].click();", element);
+
+    m)  Để điều hướng đến một trang khác bằng Javascript
+        - VD :
+              js.executeScript("window.location = 'https://anhtester.com'");
+
+    n)  Để thực hiện Cuộn chuột
+        - VD :
+            I. Để cuộn trang theo chiều dọc 500px
+                js.executeScript("window.scrollTo(0,500)");
+
+            II. Để cuộn trang theo chiều dọc cho đến hết (cuối trang)
+                js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+
+            III. Để cuộn tới 1 phần tử trong trang (này dùng nhiều)
+                WebElement element = driver.findElement(By.id("id_of_element"));
+                js.executeScript("arguments[0].scrollIntoView(true);", WebElement);
+
+    o) Thêm một phần tử trong DOM
+        - VD :
+             js.executeScript("var btn=document.createElement('newButton');" + "document.body.appendChild(btn);");
+
+    p) Highlight phần tử trên web
+        - VD :
+             js.executeScript("arguments[0].style.border='3px solid red'", WebElement);
+
+    q) Set giá trị vào LocalStorage trên Browser:
+        - VD :
+             js.executeScript("window.localStorage.setItem(arguments[0],arguments[1])","key","value");
+        - VD thực tế :
+             js.executeScript("window.localStorage.setItem(arguments[0],arguments[1])","age","30");
+                => Thì nó sẽ set giá trị 30 vào biến "age" trong browser. Lúc bấy giờ mình sẽ gọi hàm get để lấy nó ra
+             dùng là xong.
+
+    r) Get giá trị từ LocalStorage trên Browser:
+        - VD :
+             (String) js.executeScript("return window.localStorage.getItem(arguments[0])", "key");
+        - VD thực tế :
+             String localGetVar = (String) js.executeScript("return window.localStorage.getItem(arguments[0])", "age");
+                => Gọi key "age" ra để lấy giá trị 30:
+
+
 
