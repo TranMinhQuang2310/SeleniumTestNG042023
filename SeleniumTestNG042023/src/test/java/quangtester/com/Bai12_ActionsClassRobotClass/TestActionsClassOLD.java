@@ -1,17 +1,16 @@
 package quangtester.com.Bai12_ActionsClassRobotClass;
 
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
-public class TestActionsClass extends BaseTest {
+public class TestActionsClassOLD extends BaseTest_OLD {
     @Test
     public void TestSendKeys() throws InterruptedException {
-        // driver kế thừa từ class BaseTest
+        // driver kế thừa từ class BaseTest_OLD
         driver.get("https://www.google.com/");
 
         //VD1 : Dùng sendKeys và Keys class
@@ -34,7 +33,7 @@ public class TestActionsClass extends BaseTest {
     //VD3 : Dùng Double click (nhấp chuột trái 2 lần) vào Header Page
     @Test
     public void doubleClick() throws InterruptedException {
-        // driver kế thừa từ class BaseTest
+        // driver kế thừa từ class BaseTest_OLD
         driver.get("https://anhtester.com/");
         sleep(2);
 
@@ -53,7 +52,7 @@ public class TestActionsClass extends BaseTest {
     //VD4 : Dùng Context click (nhấp chuột phải 1 lần) vào Header Page
     @Test
     public void contextClick() throws InterruptedException {
-        // driver kế thừa từ class BaseTest
+        // driver kế thừa từ class BaseTest_OLD
         driver.get("https://anhtester.com/");
         sleep(2);
 
@@ -72,7 +71,7 @@ public class TestActionsClass extends BaseTest {
     //VD5 : Dùng moveToElement (di chuyển trỏ chuột) tới element bị khuất màn hình
     @Test
     public void moveToElement() throws InterruptedException {
-        // driver kế thừa từ class BaseTest
+        // driver kế thừa từ class BaseTest_OLD
         driver.get("https://anhtester.com/");
 
         //Bắt xpath element bị khuất màn hình
@@ -89,7 +88,7 @@ public class TestActionsClass extends BaseTest {
     //VD6 : Dùng dragAndDrop để kéo element từ vị trí này sang vị trí kia
     @Test
     public void dragAndDrop() throws InterruptedException {
-        // driver kế thừa từ class BaseTest
+        // driver kế thừa từ class BaseTest_OLD
         driver.get("http://demo.guru99.com/test/drag_drop.html");
         sleep(2);
         //Bắt xpath element cần kéo (Element which needs to drag) => ở đây lấy card Bank
@@ -113,7 +112,7 @@ public class TestActionsClass extends BaseTest {
     //VD7.1 : Dùng KeyUp(thả phím) và KeyDown(nhấn phím) => Nhấn phím SHIFT
     @Test
     public void inputTextUppercase() throws InterruptedException {
-        // driver kế thừa từ class BaseTest
+        // driver kế thừa từ class BaseTest_OLD
         driver.get("https://www.google.com/");
         sleep(2);
 

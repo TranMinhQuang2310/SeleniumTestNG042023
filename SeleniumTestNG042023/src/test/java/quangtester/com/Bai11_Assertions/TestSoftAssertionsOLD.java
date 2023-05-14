@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
-public class TestSoftAssertions extends BaseTest {
+public class TestSoftAssertionsOLD extends BaseTest_OLD {
 
     /*
         VD1 : Tạo testcase so sánh giữa kết quả thực tế và mong đợi có bằng với nhau hay không
@@ -48,7 +48,7 @@ public class TestSoftAssertions extends BaseTest {
         //Thực hiện so sánh bằng
         softAssert.assertEquals(headerTotalClient.getText(),"Sele", "Content của header Total Client không giống nhau");
 
-        //Cuối cùng của SoftAssert là PHẢI DÙNG hàm assertAll() để xác nhận các soft assert bên trên
+        //Cuối cùng của SoftAssert là PHẢI DÙNG hàm assertAll() để hiển thị danh sách lỗi xác nhận các soft assert bên trên (nếu có lỗi)
         softAssert.assertAll();
 
     }

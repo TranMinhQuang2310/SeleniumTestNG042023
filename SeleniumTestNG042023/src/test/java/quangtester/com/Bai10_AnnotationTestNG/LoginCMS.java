@@ -2,9 +2,9 @@ package quangtester.com.Bai10_AnnotationTestNG;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.*;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
-public class LoginCMS extends BaseTest {
+public class LoginCMS extends BaseTest_OLD {
     //Tạo 1 testcase
     @Test(priority = 2 ,description = "Login CMS") //priority là độ ưu tiên
     public void testLoginCMS() throws InterruptedException {

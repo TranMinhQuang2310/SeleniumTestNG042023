@@ -3,7 +3,7 @@ package quangtester.com.Bai12_ActionsClassRobotClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class TestRobotClass extends BaseTest {
+public class TestRobotClassOLD extends BaseTest_OLD {
     //VD1 : Dùng KeyPress và KeyRelease
     @Test
     public void inputText() throws InterruptedException, AWTException {

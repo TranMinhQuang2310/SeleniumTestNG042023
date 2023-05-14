@@ -2,11 +2,11 @@ package quangtester.com.Bai13_Alert_Popup_iFrame;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
 import java.util.Set;
 
-public class HandlePopupWindow extends BaseTest {
+public class HandlePopupWindow extends BaseTest_OLD {
     //VD1 : Chuyển sang tab window mới sau đó nhập giá trị vào ô textbox
     @Test
     public void TestPopup02() {

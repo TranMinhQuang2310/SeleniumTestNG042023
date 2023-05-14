@@ -2,9 +2,9 @@ package quangtester.com.Bai13_Alert_Popup_iFrame;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
-public class HandleIframe extends BaseTest {
+public class HandleIframe extends BaseTest_OLD {
     @Test
     public void iFrame01() {
         //Giống như driver.get("");

@@ -120,5 +120,8 @@ trình bày cách thực thi JavaScript từ Webdriver
              String localGetVar = (String) js.executeScript("return window.localStorage.getItem(arguments[0])", "age");
                 => Gọi key "age" ra để lấy giá trị 30:
 
+    =>>>>>>>> Lưu ý : Trả về giá trị phải có return trong hàm script
+                     VD : js.executeScript("return arguments[0].innerText")
+
 
 

@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
-public class HandleAlert extends BaseTest {
+public class HandleAlert extends BaseTest_OLD {
 
     //VD1 : Test alert cơ bản
     @Test

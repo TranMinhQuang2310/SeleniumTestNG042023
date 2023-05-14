@@ -1,0 +1,119 @@
+I. ĐN :
+    - Có 3 loại Wait trong Selenium Java và 1 loại Wait trong Java :
+        + Trong selenium :
+            Implicit Wait, Explicit Wait và Fluent Wait
+        + Trong Java :
+            Thread.sleep()
+
+    - Selenium Webdriver như đã giới thiệu ở bài số 3 rồi thì nó là thư viện để tương tác với browser, nhưng khi chạy code
+    có thể với nhiều nguyên nhân mà mỗi lần chạy lại khác nhau, trang web có thể load lâu hơn, nhanh hơn, khiến cho test script
+    của bạn liên tục gặp phải Exception.
+
+    - Để khắc phục điều này thì Selenium Webdriver cung cấp 3 loại Wait để giúp cho test script trở nên ổn định hơn,
+    đồng bộ hóa giữa những lần run test.
+
+II. Phân loại Wait :
+    1. Thread.sleep() của Java :
+        - ĐN :
+            + Là "chờ đợi cứng"
+            + Không có điều kiện (đúng thời gian là chạy , đúng thời gian là ngừng chạy)
+
+    2. Implicit Wait
+        - ĐN :
+            + Là “chờ đợi ngầm”
+            + Áp dụng cho TOÀN BỘ câu lệnh tìm kiếm driver.findElement của tất cả trong source cho đến khi reset
+            + Áp dụng chung 1 điều kiện là tìm thấy Locator của element
+        - VD :
+                + VD1 : driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+             => Nghĩa là :  Chờ đợi ngầm định cho từng câu lệnh tìm kiếm driver.findElement() trong khoảng thời gian là 10s.
+             Sau 10s mà không tìm thấy thì sẽ văng ra Exception.
+
+                + VD2 : driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+             => Nghĩa là : Reset Implicit Wait (thay đổi thời gian chờ đợi về 0) trong trường hợp muốn 1 đoạn nào trong source
+             không cần chờ đợi => Có thể clean up ở @AfterTest để reset lại thời gian timeouts
+
+                + VD3 : driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+             => Nghĩa là : Chờ đợi Javascript load xong
+                    *Ghi chú : Kiểm tra javascript load bao nhiêu giây bằng cách
+                        B1 : Vô 1 trang web => F12 => Network => F5 lại page => Kiểm tra trên thanh thời gian
+
+                + VD4 : driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+             => Nghĩa là : chờ đợi cả Trang load xong (bao gồm load cả HTML,CSS,JS,...)
+
+    3. Explicit Wait
+        - ĐN :
+             + Là "cố tình đợi"
+             + Khác với Implicit wait, Explicit wait chỉ được áp dụng cho MỘT câu lệnh tìm kiếm chỉ định cụ thể thay vì dùng cho toàn bộ
+             các lệnh trong script.
+             + Chỉ dừng lại khi không thỏa <một điều kiện cụ thể> cho từng câu lệnh
+                => Khắc phục tình trạng tốn thời gian khi đang chạy case mà bị lỗi
+
+        - Trường hợp đang sử dụng kết hợp cả 2 loại Wait :
+            1. Nếu Explicit Wait dùng câu lệnh tìm kiếm là đối tượng By thì Explicit Wait sẽ được ưu tiên đầu tiên.
+                VD :
+                    By buttonLogin = By.xpath("")
+                        => Đối tượng By khai báo sẵn 1 locator cho 1 tên object sẵn (chưa thao tác hành động trong selenium được)
+            2. Nếu Explicit Wait dùng câu lệnh tìm kiếm là findElement thì Implicit Wait sẽ được ưu tiên đầu tiên.
+                VD :
+                    WebElement buttonLogin = driver.findElement(By.xpath(""));
+                        => Đối tượng WebElement (gọi được các hàm hành động trong Selenium)
+
+        - Một số Expected Conditions điển hình :
+            1. Hàm elementToBeClickable() :
+                VD :
+                    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Anh Tester')]")));
+                        => Chờ 1 element sẵn sàng để click , tức là phần tử đó phải hiện diện / được hiển thị trên màn hình và phải enabled (có thể click).
+
+            2. Hàm textToBePresentInElement() :
+                VD :
+                    wait.until(ExpectedConditions.textToBePresentInElement(By.xpath("//div[@id= 'forgotPass'"), "text to be found"));
+                        => Chờ 1 element tồn tại 1 đoạn text
+
+            3. alertIsPresent()
+                VD :
+                    wait.until(ExpectedConditions.alertIsPresent()) !=null);
+                        => Chờ 1 hộp cảnh báo xuất hiện.
+
+            4. titleIs()
+                VD :
+                    wait.until(ExpectedConditions.titleIs("Anh Tester - Automation Testing"));
+                        => Chờ 1 title xuất hiện
+
+            5. rameToBeAvailableAndSwitchToIt()
+                VD :
+                    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("newframe")));
+                        => Chờ 1 frame tồn tại đồng thời chuyển hướng đến frame đó
+
+            6. visibilityOfElementLocated()
+                VD :
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[contains(text(),'Website Testing')]")));
+                        =>  được sử dụng để kiểm tra xem một phần tử có trên DOM của một trang và hiển thị hay không. Có nghĩa là nó sử dụng đối tượng By
+                        thay vì đối tượng WebElement với chức năng có thể gọi để tìm phần tử đó trước rồi kiểm tra phần tử đó có hiển thị hay không.
+                    driver.findElement(By.xpath("//h3[contains(text(),'Website Testing')]")).click();
+                        => Gọi lại locator ở trên để thực hiện NẾU như tìm thấy
+
+            7. visibilityOf()
+                VD :
+                wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//h3[contains(text(),'Website Testing')]"))));
+                        => được sử dụng để kiểm tra xem một phần tử hiện diện trên DOM của một trang có hiển thị hay không.
+                        Có nghĩa là bạn đã tìm thấy Element đó rồi và chỉ kiểm tra nó có hiển thị hay chưa. Nên tham số nó
+                        kiểm tra là 1 đối tượng WebElement chứ không phải đối tượng By.
+
+                driver.findElement(By.xpath("//h3[contains(text(),'Website Testing')]")).click();
+                        => Gọi lại locator ở trên để thực hiện NẾU như tìm thấy
+
+    * Ghi chú : Sự khác biệt giữa Present và Visible
+         + Present : chỉ kiểm tra tồn tại trong DOM
+         + Visible : kiểm tra vừa tồn tại trong DOM mà vừa sẵn sàng hiển thị lên UI để thao tác được
+
+    4. Fluent Wait
+        - ĐN :
+            + Fluent Wait là cung cấp 1 cơ chế Wait chung, có thể ứng dụng được nhiều chỗ, không chỉ ứng dụng cho mỗi WebDriver,
+        và nó chính là cha của Explicit Wait
+                => public class WebDriverWait extends FluentWait<WebDriver>;
+
+        - VD :
+            Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                            .withTimeout(Duration.ofSeconds(30)) // Chờ 30 giây để một phần tử hiện diện trên trang
+                            .pollingEvery(Duration.ofSeconds(5)) // Và sẽ thực hiện lặp lại mỗi 5 giây nếu chưa tìm thấy phần tử đó
+                            .ignoring(NoSuchElementException.class);

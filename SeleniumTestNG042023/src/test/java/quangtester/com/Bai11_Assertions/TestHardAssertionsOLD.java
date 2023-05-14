@@ -2,9 +2,9 @@ package quangtester.com.Bai11_Assertions;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import quangtester.com.common.BaseTest;
+import quangtester.com.common.BaseTest_OLD;
 
-public class TestHardAssertions extends BaseTest {
+public class TestHardAssertionsOLD extends BaseTest_OLD {
     /*
         VD1 : Tạo testcase so sánh giữa kết quả thực tế và mong đợi có bằng với nhau hay không
            => Nếu bằng nhau , in dòng "VD1 Thành công"
